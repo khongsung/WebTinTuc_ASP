@@ -1,0 +1,49 @@
+#content_main {
+	line-height: 25px;
+	text-align: justify;
+}
+
+#title_content_news p
+{
+	font-size: 28px;
+	padding-bottom: 20px;
+    line-height: 35px;
+}
+
+#date_post_news p {
+	color: #555;
+	padding-bottom: 5px;
+	font-size: 12px;
+}
+
+#description_news p {
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#content_news p {
+	text-indent: 40px;
+}
+
+#author_news p {
+	font-style: italic;
+	font-weight: bold;
+	float: right;
+}
+
+#form_send {
+    margin-top: 50px;
+}
+
+#form_send input {
+    margin-left: 20px;
+}
+
+#form_send label {
+    font-weight:bold;
+}
+
+#form_send span {
+    margin-left: 20px;
+    color: red;
+}

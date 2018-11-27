@@ -1,0 +1,105 @@
+﻿@model List<BTL_WNC.Models.tblNew>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/Frontend/_LayoutFrontend.cshtml";
+}
+
+<asp:Content ID="directional" ContentPlaceHolderID="directional" runat="server">
+    <div class="derected">
+        <div class="wp_inner clearfix">
+            <ul class="list_cat_derected">
+                <li><a href="/" title="">Trang Chủ</a></li>
+                <li><a href="#" title="">@ViewBag.CategeoryName</a></li>
+            </ul>
+        </div>
+    </div>
+</asp:Content>
+
+<div class="content fl_left">
+    <div class="post_cover clearfix">
+        @*@Html.Raw(ViewBag.PostCover)*@
+        <div class="post_cover_up clearfix">
+            <a href="~/Frontend/detail-@ViewBag.PostCover.iId" title="" class="thumb">
+                <img src="~/Images/Frontend/post_covert_thumb.png" alt="" />
+            </a>
+            <a href="~/Frontend/detail-@ViewBag.PostCover.iId" title="">
+                <h2>@ViewBag.PostCover.sTitle</h2>
+            </a>
+            <p>@ViewBag.PostCover.sDescription</p>
+        </div>
+        @*<div>
+            <div class="fl_left" style="width: 390px">
+                <ul class="list_cat">
+                    <li class="clearfix">
+                        <a href="#" target="" class="thumb">
+                            <img src="~/Images/Frontend/img1_list_post1.png" alt="" />
+                        </a>
+                        <a href="#" target="">
+                            Việt Nam mong muốn kí hiệp định thương mại tự do với EU
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="" class="thumb">
+                            <img src="~/Images/Frontend/img1_list_post1.png" alt="" />
+                        </a>
+                        <a href="#" target="">
+                            Việt Nam mong muốn kí hiệp định thương mại tự do với EU
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fl_right" style="width: 390px">
+                <ul class="list_cat">
+                    <li class="clearfix">
+                        <a href="#" target="" class="thumb">
+                            <img src="~/Images/Frontend/img1_list_post1.png" alt="" />
+                        </a>
+                        <a href="#" target="">
+                            Việt Nam mong muốn kí hiệp định thương mại tự do với EU
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="" class="thumb">
+                            <img src="~/Images/Frontend/img1_list_post1.png" alt="" />
+                        </a>
+                        <a href="#" target="">
+                            Việt Nam mong muốn kí hiệp định thương mại tự do với EU
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
+    </div>
+    <!-- the end post_cover -->
+
+
+    @for (var i = 0; i < Model.Count()-1; i++ )
+    {
+        <div class="category_content clearfix">
+            <a href="~/Frontend/detail-@Model[i].iId" target="" class="thumb">
+                <img src="~/Images/Frontend/img1_post_future1.png" alt="" />
+            </a>
+            <a href="~/Frontend/detail-@Model[i].iId" target="">
+                <h4>@Model[i].sTitle</h4>
+            </a>
+            <span>30/4/2017</span>
+            <p>@Model[i].sDescription</p>
+        </div>
+    }
+    
+
+    @*<div class="category_content clearfix">
+        <a href="#" target="" class="thumb">
+            <img src="~/Images/Frontend/img1_post_future1.png" alt="" />
+        </a>
+        <a href="#" target="">
+            <h4>Công trình xanh cho nhà ở đô thị: Phải hướng đến sự phát triển bền vững</h4>
+        </a>
+        <span>30/4/2017</span>
+        <p>Theo thông báo ngày hôm nay (28/1), đối tác chiến lược của Công ty cổ phần Tập đoàn Masan là Singha Asia Holding Pte Ltd (“Singha”) đã hoàn thành đợt góp vốn đầu tiên trị giá 650 triệu USD vào công ty này.</p>
+    </div>*@
+
+    
+</div>
+<!-- the end content_main -->
+

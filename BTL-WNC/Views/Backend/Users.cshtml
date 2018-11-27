@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<BTL_WNC.Models.tblUser>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/Backend/_LayoutBackend.cshtml";
+}
+
+
+@*modal edit user*@
+<div class="modal fade" id="frmEditUser" role="dialog">
+    <div class="modal-dialog">
+        
+            <div class="modal-content">
+                
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form">
+                            <fieldset id="submitForm">
+                                <div class="form-group">
+                                    <input type="hidden" name="iId" id="id" />
+                                    <input type="text" name="sUsername" id="username" class="form-control" placeholder="User name" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="sEmail" id="email" class="form-control" placeholder="Password" />
+                                </div>
+                                <div class="form-group">
+                                    <select id="role" name="sRole" class="form-control">
+                                        <option value="admin">Admin</option>
+                                        <option value="writer">Writer</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="edit-user">Edit</button>
+                        <button class="btn btn-danger" data-dismiss="modal">Cancle</button>
+                    </div>
+            </div>
+        
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Bordered Table</h3>
+    </div>
+    <!-- /.box-header -->
+    <a href="~/users/add" class="btn btn-primary">
+        Thêm Mới
+    </a>
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Change Password</th>
+                    <th style="width: 40px">Label</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.iId">
+                        <td>@item.iId</td>
+                        <td>@item.sUsername</td>
+                        <td>@item.sEmail</td>
+                        <td>@item.sRole</td>
+                        
+                        <td class="col-md-2">
+                            <a href="#" class="btn userEdit-active" data-id="@item.iId" data-toggle="modal" data-target="#frmEditUser"><span class="glyphicon glyphicon-edit">Edit</span></a>
+                            <a href="#" class="btn userDelete-active" data-id="@item.iId"><span class="badge bg-red">Delete</span></a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix ">
+        @Html.PagedListPager(Model, page => Url.Action("Users", "Backend", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+</div>
+

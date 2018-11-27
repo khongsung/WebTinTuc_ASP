@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Frontend/trang_chu.css" rel="stylesheet" />
+    <link href="~/Content/Frontend/global.css" rel="stylesheet" />
+    <link href="~/Content/Frontend/reset.css" rel="stylesheet" />
+    <link href="~/Content/Frontend/sukien.css" rel="stylesheet" />
+    <link href="~/Content/Frontend/create_news.css" rel="stylesheet" />
+    <link href="~/Content/Frontend/chi_tiet_bai_dang.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome/css/font-awesome.min.css" />
+</head>
+<body>
+    <div id="wapper">
+        @{Html.RenderAction("PartialHeader", "Frontend");}
+        @*Html.Partial("~/Views/Shared/Frontend/PartialHeader.cshtml")*@
+
+        @*directional here*@
+
+        <div id="main" class="clear_fix wp_inner">
+            <div>
+                @RenderBody()
+            </div>
+            <!-- the end content main -->
+
+            @{Html.RenderAction("PartialSidebar", "Frontend");}
+            <!-- the end sidebar main -->
+        </div>
+
+        @Html.Partial("~/Views/Shared/Frontend/PartialFooter.cshtml")
+        <!-- the end footer -->
+
+        <div id="copyright">
+            <p class="text_center">&copy All right reserved. Bản quyền thuộc về VIETSOZ.com</p>
+        </div>
+        <!-- the end copyright -->
+    </div>
+</body>
+</html>

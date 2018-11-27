@@ -1,0 +1,16 @@
+.wp_inner {
+	margin: 0px auto;
+	width: 1170px;
+}
+
+.fl_left {
+	float: left;
+}
+
+.fl_right {
+	float: right;
+}
+
+.text_center {
+	text-align: center;
+}

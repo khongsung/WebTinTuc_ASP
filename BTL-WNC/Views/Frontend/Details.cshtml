@@ -1,0 +1,33 @@
+﻿@model BTL_WNC.Models.tblNew
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Frontend/_LayoutFrontend.cshtml";
+}
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="directional" runat="server">
+</asp:Content>
+
+    <div id="content_main" class="fl_left">
+        <div id="title_content_news">
+            <p id="txtTitle" >@Model.sTitle</p>
+        </div>
+        <div id="date_post_news">
+            <p>Ngày Đăng: 20/11/2017</p>
+        </div>
+        <div id="description_news">
+            <p>@Model.sDescription</p>
+        </div>
+        <div id="content_news">
+            <p id="txtContent">
+                @Model.sContent
+            </p>
+        </div>
+        <div id="author_news">
+            <p>Người đăng: @Model.sAuthor</p>
+        </div>
+    </div>
+
+
+

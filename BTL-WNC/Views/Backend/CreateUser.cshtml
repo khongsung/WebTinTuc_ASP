@@ -1,0 +1,65 @@
+﻿@model BTL_WNC.Models.tblUser
+
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/Backend/_LayoutBackend.cshtml";
+}
+
+<h2>CreateUser</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tblUser</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sUsername, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.sUsername, new { @class = "form-control", @placeholder = "User name" })
+                @Html.ValidationMessageFor(model => model.sUsername, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sEmail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.sEmail, new { @class = "form-control", @type="email", @placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.sEmail, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.sPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.sPassword, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sRole, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.sRole, new List<SelectListItem>()
+           {
+               new SelectListItem(){Selected = true, Text = "Admin", Value = "admin"},
+               new SelectListItem(){Selected = false, Text = "Writer", Value="writer"}
+           }, new { @class="form-control" })
+                @Html.ValidationMessageFor(model => model.sRole, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

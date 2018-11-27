@@ -1,0 +1,37 @@
+﻿@model List<BTL_WNC.Models.tblNew>
+
+<div id="sidebar_main" class="fl_right">
+    <div class="advs">
+        <a href="#" title="">
+            <img src="~/Images/Frontend/img1_advs.png" alt="" />
+        </a>
+    </div>
+    <!-- the end box1 advertisment -->
+
+    <div class="sidebar_cat1">
+        <div class="widget_title_sidebar_cat1">
+            <a href="#" title="">Đọc nhiều nhất</a>
+        </div>
+
+        <div class="widget_detail_sidebar_cat1">
+            <ul class="list_ctg">
+                @foreach (var item in Model)
+                {
+                    <li class="clearfix">
+                        <img src="~/Images/Frontend/img1_list_post1.png" alt="" class="img_thumb" />
+                        <a href="~/Frontend/detail-@item.iId" title=""><h4>@item.sTitle</h4></a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+    <!-- the end catagory1 -->
+
+    <div class="advs">
+        <a href="#" title="" class="clearfix">
+            <img src="~/Images/Frontend/img2_advs.png" alt="" />
+        </a>
+    </div>
+</div>
+

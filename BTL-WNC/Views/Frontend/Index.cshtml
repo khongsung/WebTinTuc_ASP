@@ -1,0 +1,72 @@
+﻿@model List<BTL_WNC.Models.tblCategory>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Frontend/_LayoutFrontend.cshtml";
+}
+
+<div id="content_main" class="fl_left">
+    <div id="post_cover">
+        <div class="post_cover_left fl_left">
+            <img src="~/Images/Frontend/post_covert_thumb.png" alt="" />
+            <a href="~/Frontend/detail-@ViewBag.PostCoverTop.iId" title=""><h2>@ViewBag.PostCoverTop.sTitle</h2></a>
+            <p>@ViewBag.PostCoverTop.sDescription</p>
+        </div>
+
+
+        <div class="post_cover_right fl_right">
+            <ul class="list_ctg">
+                @for (var i = 0; i < 3; i++)
+                {
+                    <li>
+                        <img src="~/Images/Frontend/img1_list_post1.png" alt="" class="img_thumb" />
+                        <a href="~/Frontend/detail-@ViewBag.ListPostCoverTop[i].iId" title=""><h4>@ViewBag.ListPostCoverTop[i].sTitle</h4></a>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+    <!-- the end post cover -->
+
+    @for (var i = 1; i < Model.Count(); i++)
+    {
+        <div class="future_cat clearfix">
+            <div class="header_future_cat">
+                <h2>@Model[i].sName</h2>
+            </div>
+
+            <div class="content_future_cat">
+
+                <div class="widget_title_future_cat">
+                    <a href="~/Frontend/detail-@ViewBag.PostCoverList[i].iId" title="" class="title_wgfc">
+                        <h3>@ViewBag.PostCoverList[i].sTitle</h3>
+                    </a>
+
+                    <a href="~/Frontend/detail-@ViewBag.PostCoverList[i].iId" title="" class="thumb">
+                        <img src="~/Images/Frontend/img1_post_future1.png" alt="" />
+                    </a>
+
+                    <p>@ViewBag.PostCoverList[i].sDescription</p>
+                </div>
+
+                <div class="list_detail_future_cat fl_right">
+                    <ul class="list_ctg">
+                        @foreach (var item in @ViewBag.PostListRight[i])
+                        {
+                            <li class="clearfix">
+                                <img src="~/Images/Frontend/img1_list_post1.png" alt="" class="img_thumb" />
+                                <a href="~/Frontend/detail-@item.iId" title=""><h4>@item.sTitle</h4></a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    }
+
+    <!-- the end future cat 1 -->
+
+</div>
+<!-- the end content main -->
+

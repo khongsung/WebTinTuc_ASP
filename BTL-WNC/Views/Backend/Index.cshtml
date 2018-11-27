@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<BTL_WNC.Models.tblNew>
+@using PagedList
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Backend/_LayoutBackend.cshtml";
+}
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Bordered Table</h3>
+    </div>
+    <!-- /.box-header -->
+    <a href="~/news/add" class="btn btn-primary">
+        Thêm Mới
+    </a>
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Author</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th style="width: 40px">Label</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.iId">
+                        <td>@item.iId</td>
+                        <td>@item.sImage</td>
+                        <td>@item.sTitle</td>
+                        <td>@item.sDescription</td>
+                        <td>@item.sAuthor</td>
+                        <td>
+                            <a href="#" class="status" data-status="@item.iId" id="status_@item.iId">@(item.bStatus == true ? "Hiện" : "Ẩn")</a>
+                        </td>
+                        <td>@item.dCreated</td>
+                        <td>
+                            <a href="#" data-id="@item.iId"><span class="badge bg-yellow">Edit</span></a>
+                            <a href="#" data-id="@item.iId" class="btn btn-active"><span class="badge bg-red">Delete</span></a>
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix ">
+        @Html.PagedListPager(Model, page => Url.Action("Index", "Backend", new { page = page }),PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+</div>

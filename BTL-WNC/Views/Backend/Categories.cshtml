@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<BTL_WNC.Models.tblCategory>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/Backend/_LayoutBackend.cshtml";
+}
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Bordered Table</h3>
+    </div>
+    <!-- /.box-header -->
+    <a href="~/categories/add" class="btn btn-primary">
+        Thêm Mới
+    </a>
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Name</th>
+                    <th>Link</th>
+                    <th>Target</th>
+                    <th>Slag</th>
+                    <th style="width: 40px">Label</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.iId">
+                        <td>@item.iId</td>
+                        <td>@item.sName</td>
+                        <td>@item.link</td>
+                        <td>@item.taget</td>
+                        <td>@item.slag</td>
+                        <td class="col-md-2">
+                            <a href="#" class="btn"><span class="badge bg-red">Edit</span></a>
+                            @Ajax.ActionLink("Xóa", "DeleteCategory", new { @id=item.iId }, new AjaxOptions
+                            {
+                                Confirm = "Bạn chắc chắn muốn xóa?",
+                                OnComplete = "$('#row_'" + @item.iId + "').remove()",
+                                HttpMethod = "Delete"
+                            })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix ">
+        @Html.PagedListPager(Model, page => Url.Action("Categories", "Backend", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+</div>
+

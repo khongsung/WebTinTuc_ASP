@@ -1,0 +1,26 @@
+﻿@model List<BTL_WNC.Models.tblCategory>
+
+<div id="header">
+    <div class="wp_inner clearfix">
+        <a href="~/" title="" class="fl_left">
+            <img src="~/Images/Frontend/logo.png" alt="" />
+        </a>
+
+        <div>
+            <form action="#" method="post">
+                <input type="search" name="" placeholder="search" />
+                <input type="submit" name="" value="Tìm Kiếm">
+            </form>
+        </div>
+
+        <ul>
+            <li>@Html.ActionLink("Trang Chủ", "Index", "Frontend")</li>
+            @foreach (var item in Model)
+            {
+                <li><a href="~/@item.link-@item.iId" title="">@item.sName</a></li>
+            }
+        </ul>
+
+    </div>
+</div>
+
